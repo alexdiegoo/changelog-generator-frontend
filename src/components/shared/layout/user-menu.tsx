@@ -5,6 +5,7 @@ import { LogOutIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -22,11 +23,7 @@ export function UserMenu() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
-        render={
-          <Button variant="ghost" size="icon" aria-label="Account menu" />
-        }
-      >
+      <DropdownMenuTrigger className="inline-flex shrink-0 items-center justify-center rounded-lg hover:bg-accent hover:text-accent-foreground size-8" aria-label="Account menu">
         <Avatar className="relative size-8">
           {user?.avatar_url ? (
             <Image
@@ -41,18 +38,23 @@ export function UserMenu() {
           )}
         </Avatar>
       </DropdownMenuTrigger>
+      
       <DropdownMenuContent align="end" className="w-52">
-        <DropdownMenuLabel>
-          <div className="flex flex-col">
-            <span className="text-sm font-medium">
-              {user?.username ?? "Signed in"}
-            </span>
-            <span className="text-xs text-muted-foreground">
-              Connected with GitHub
-            </span>
-          </div>
-        </DropdownMenuLabel>
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>
+            <div className="flex flex-col">
+              <span className="text-sm font-medium">
+                {user?.username ?? "Signed in"}
+              </span>
+              <span className="text-xs text-muted-foreground">
+                Connected with GitHub
+              </span>
+            </div>
+          </DropdownMenuLabel>
+        </DropdownMenuGroup>
+        
         <DropdownMenuSeparator />
+        
         <DropdownMenuItem
           variant="destructive"
           disabled={logout.isPending}
