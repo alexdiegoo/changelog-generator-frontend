@@ -145,7 +145,7 @@ function ImportRepositoryPicker() {
 
       <div className="max-h-80 overflow-y-auto rounded-md border border-border">
         {available.isLoading ? (
-          <div className="space-y-2 p-3">
+          <div className="space-y-2 p-3" data-testid="loading-skeletons">
             {Array.from({ length: 5 }).map((_, i) => (
               <Skeleton key={i} className="h-10 w-full" />
             ))}
